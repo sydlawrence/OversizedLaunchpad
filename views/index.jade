@@ -1,0 +1,125 @@
+h1 This is just a simple launchpad demo
+
+style
+  #launchpad {
+    width:1000px;
+    padding-top:50px;
+  }
+
+  .launchpad {
+    width:220px;
+    height:220px;
+    display:inline-block;
+    margin-right:10px;
+    position:relative;
+  }
+
+
+
+  .launchpad button:nth-child(9n), button[data-extra] {
+    border-radius:20px;
+  }
+
+
+  button[data-y="8"] {
+    position:relative;
+    top:-235px;
+  }
+
+  button {
+    border:2px solid transparent;
+    width:20px;
+    height:20px;
+    margin:2px;
+    font-size:2px;
+    border:none;
+    position:relative;
+    background:#ccc;
+    opacity:0.5;
+  }
+
+  button[data-x="7"][data-y="8"] {
+    border:2px solid #0a0;
+  }
+  button[data-x="8"]:after {
+    display:block;
+    display:none;
+    position:absolute;
+    left:60px;
+    top:16px;
+    white-space:nowrap;
+    width:40px;
+    text-align:center;
+    border:3px;
+    border-radius:8px;
+    padding:4px;
+    background:#0a0;
+    color:#fff;
+    overflow:hidden;
+    font-weight:bold;
+     content: attr(data-extra);
+  }
+
+  button.pressed {
+    opacity:1;
+    border-color:#000;
+  }
+
+  button .progress {
+    position:absolute;
+    background:#f00;
+    content: " ";
+    height:100%;
+    top:0;
+    left:0;
+  }
+
+  button.looping .progress {
+    background:#0f0;
+  }
+
+  button[data-state="12"] { background:#ccc; }
+
+  button[data-state="1"] { background:rgba(255,0,0,0.3); }
+  button[data-state="2"] { background:rgba(255,0,0,0.7); }
+  button[data-state="3"] { background:rgba(255,0,0,1); }
+
+  button[data-state="29"] { background:rgba(255,128,0,0.3); }
+
+  button[data-state="46"] { background:rgba(0,255,0,0.3); }
+  button[data-state="47"] { background:rgba(255,128,0,1); }
+  button[data-state="48"] { background:rgba(0,255,0,1); }
+  button[data-state="49"] { background:rgba(255,255,0,1); }
+
+
+
+  button[data-state="63"] { background:rgba(255,128,0,0.3); }
+  button[data-state="63"] { background:rgba(255,128,0,0.7); }
+  button[data-state="18"] { background:rgba(255,128,0,1); }
+
+
+
+
+  button[data-state="54"] { background:rgba(255,255,0,1); }
+
+
+  button[data-state="62"] { background:rgba(255,255,0,1); }
+
+
+
+h2 Launchpad
+#launchpad
+
+h2 Output
+
+form( onsubmit="midiFormSubmit(); return false;" )
+  fieldset
+    legend New MIDI message
+    p
+      input#midi1( type="number", value="144")
+      input#midi2( type="number", value="40")
+      input#midi3( type="number", value="40")
+      button(type="submit") Send
+
+h2 Input
+#input_log
