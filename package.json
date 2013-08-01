@@ -5,5 +5,8 @@
   , "dependencies": {
       "express": "2.5.1"
     , "jade": ">= 0.0.1"
+    , "twitter": ">= 0.0.1"
+    , "midi": ">= 0.0.1"
+    , "socket.io": ">= 0.0.1"
   }
 }
