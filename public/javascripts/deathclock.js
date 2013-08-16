@@ -1,9 +1,23 @@
+var pusher = new Pusher('efa61030395bf0550164');
+var channel = pusher.subscribe('standing_novation');
+
+
 var DeathClock = function(launchpad) {
   this.active = false;
+  var that = this;
+
+
   this.run = function() {
     launchpad.allLight(Launchpad.colors.off);
-    this.processYear(1985);
+    that.displayInstructions();
   }
+
+  channel.bind('new_sms', function(data) {
+    if (that.active) {
+      that.deactivate();
+      that.processYear(data.Body);
+    }
+  });
 
   this.deactivate = function() {
     for (var i = 0; i < launchpad.launchpads.length; i++) {
@@ -13,13 +27,12 @@ var DeathClock = function(launchpad) {
     }
   }
 
-  var that = this;
 
   this.displayInstructions = function() {
-    var string =  "Send your year of birth to +448123123123. ";
-    var string1 = "end your year of birth to +448123123123. S";
-    var string2 = "nd your year of birth to +448123123123. Se";
-    var string3 = "d your year of birth to +448123123123. Sen";
+    var string =  "Send your year of birth to +442033228273. ";
+    var string1 = "end your year of birth to +442033228273. S";
+    var string2 = "nd your year of birth to +442033228273. Se";
+    var string3 = "d your year of birth to +442033228273. Sen";
 
     launchpad.allLight(Launchpad.colors.yellow.high);
 
