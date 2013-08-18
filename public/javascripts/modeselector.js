@@ -37,9 +37,10 @@ var ModeSelector = function(launchpad) {
       if (button.special !== false) {
         console.log(button.special);
         if (button.special.indexOf("right") > -1) {
-          console.log("SWITCH MODE: "+button.y);
-          var mode = modes[button.y];
-          that.switchMode(mode);
+          // console.log("SWITCH MODE: "+button.y);
+          // var mode = modes[button.y];
+          // that.switchMode(mode);
+          that.nextMode();
         }
       }
     }
@@ -50,6 +51,12 @@ var ModeSelector = function(launchpad) {
     // if (button.special.indexOf("up") > -1) activeBrick.rotate(1);
     // if (button.special.indexOf("down") > -1) activeBrick.rotate(-1);
   });
+
+  this.nextMode = function() {
+    var i = (activeModeIndex+1) % modes.length;
+    var mode = modes[i];
+    this.switchMode(mode);
+  }
 
   this.addMode = function(obj) {
     modes.push(obj);

@@ -9,6 +9,13 @@ var Wave = function(launchpad) {
 
   this.run = function() {
     launchpad.allLight(Launchpad.colors.off);
+    launchpad.displayString("Zen Garden");
+    setTimeout(function() {
+      launchpad.displayString("Press away");
+      setTimeout(function() {
+        launchpad.allLight(Launchpad.colors.off);
+      },2000);
+    },2000);
   }
 
   var colors = [

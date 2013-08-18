@@ -1,9 +1,23 @@
 var Instagram = function(launchpad) {
 
+  var that = this;
+
   this.run = function() {
 
     launchpad.allLight(Launchpad.colors.off);
+    launchpad.displayString("Instagram");
+    setTimeout(function() {
+      launchpad.displayString("#cat");
+      setTimeout(function() {
+        launchpad.allLight(Launchpad.colors.off);
+        that.drawInstagram();
+      },2000);
+    },2000);
 
+
+  }
+
+  this.drawInstagram = function() {
 
     var hashtag = "cat";
     var url = "https://api.instagram.com/v1/tags/"+hashtag+"/media/recent?client_id=fa26679250df49c48a33fbcf30aae989&callback=?";

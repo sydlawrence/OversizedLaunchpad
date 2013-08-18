@@ -1,8 +1,13 @@
 var Twitter = function(launchpad) {
   this.active = false;
   this.run = function(){
-    launchpad.midi.emit("tweet_start",{});
+
     launchpad.allLight(Launchpad.colors.off);
+    launchpad.displayString("Twitter viz");
+    setTimeout(function() {
+      launchpad.midi.emit("tweet_start",{});
+      launchpad.allLight(Launchpad.colors.off);
+    },2000);
   }
   this.deactivate = function() {
     launchpad.midi.emit("tweet_end",{});

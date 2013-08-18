@@ -24,16 +24,19 @@ var Turbo = function(launchpad) {
   }
 
   this.run = function() {
-        launchpad.allLight(Launchpad.colors.off);
-
+    launchpad.allLight(Launchpad.colors.off);
+    launchpad.displayString("Turbo Disco");
+    setTimeout(function() {
+      launchpad.allLight(Launchpad.colors.off);
       audio.currentTime = 0;
-    audio.play();
-    this.interval = setInterval(function() {
-      if (!that.active) return;
-      for (var i = 0; i < 50; i++) {
-        showRandom();
-      }
-    },0);
+      audio.play();
+      this.interval = setInterval(function() {
+        if (!that.active) return;
+        for (var i = 0; i < 50; i++) {
+          showRandom();
+        }
+      },0);
+    },2000);
   }
 
   this.deactivate = function() {

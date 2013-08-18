@@ -9,7 +9,16 @@ var DeathClock = function(launchpad) {
 
   this.run = function() {
     launchpad.allLight(Launchpad.colors.off);
-    that.displayInstructions();
+    launchpad.displayString("Death Clock");
+    setTimeout(function() {
+      launchpad.displayString("Send Year of");
+      setTimeout(function() {
+        launchpad.displayString("Birth to:");
+        setTimeout(function() {
+          launchpad.displayString("02033228273");
+        },2000);
+      },2000);
+    },2000);
   }
 
   channel.bind('new_sms', function(data) {
@@ -25,28 +34,6 @@ var DeathClock = function(launchpad) {
         launchpad.launchpads[i][j].clearScroll();
       }
     }
-  }
-
-
-  this.displayInstructions = function() {
-    var string =  "Send your year of birth to +442033228273. ";
-    var string1 = "end your year of birth to +442033228273. S";
-    var string2 = "nd your year of birth to +442033228273. Se";
-    var string3 = "d your year of birth to +442033228273. Sen";
-
-    launchpad.allLight(Launchpad.colors.yellow.high);
-
-    launchpad.launchpads[1][0].allLight(Launchpad.colors.off);
-    launchpad.launchpads[1][0].scrollString(string, 100, Launchpad.colors.red.high, function() {
-      that.displayInstructions();
-    });
-    launchpad.launchpads[1][1].allLight(Launchpad.colors.off);
-    launchpad.launchpads[1][1].scrollString(string1, 100, Launchpad.colors.red.high);
-    launchpad.launchpads[1][2].allLight(Launchpad.colors.off);
-    launchpad.launchpads[1][2].scrollString(string2, 100, Launchpad.colors.red.high);
-    launchpad.launchpads[1][3].allLight(Launchpad.colors.off);
-    launchpad.launchpads[1][3].scrollString(string3, 100, Launchpad.colors.red.high);
-
   }
 
   var blinkState = false;
@@ -65,6 +52,8 @@ var DeathClock = function(launchpad) {
 
   this.processYear = function(year) {
     year = year+"";
+    launchpad.allLight(Launchpad.colors.green.high);
+
     launchpad.launchpads[1][0].displayCharacter(year[0]);
     launchpad.launchpads[1][1].displayCharacter(year[1]);
     launchpad.launchpads[1][2].displayCharacter(year[2]);
@@ -88,7 +77,7 @@ var DeathClock = function(launchpad) {
             var t = setTimeout(function() {
               if (!that.active) return;
               launchpad.getButton(x,y).light(Launchpad.colors.red.high);
-            }, i*200);
+            }, i*50);
           })(i);
         }
         var t = setTimeout(function() {
@@ -96,7 +85,7 @@ var DeathClock = function(launchpad) {
           var y = Math.floor((data.dark)/32);
           that.blink(x,y);
 
-        }, data.dark*200 + 500);
+        }, data.dark*50 + 500);
       });
 
     }, 3000);

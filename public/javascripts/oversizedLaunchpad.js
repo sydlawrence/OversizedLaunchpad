@@ -16,6 +16,20 @@ var OversizedLaunchpad = function(midi, across, down) {
     }
   }
 
+  this.displayString = function(str) {
+    this.allLight(Launchpad.colors.red.high);
+    for (var c = 0; c < str.length;c++) {
+      var i = c % launchpads.length;
+      var j = Math.floor(c / launchpads[0].length);
+      var launchpad = launchpads[i][j];
+      if (str[c] === " ") {
+        launchpad.allLight(Launchpad.colors.red.high);
+      } else {
+        launchpad.displayCharacter(str[c],Launchpad.colors.green.high);
+      }
+    }
+  }
+
   this.allLight = function(color) {
     for (var i = 0; i < launchpads.length; i++) {
       for (var j = 0; j < launchpads[i].length; j++) {
@@ -36,6 +50,8 @@ var OversizedLaunchpad = function(midi, across, down) {
 
 
   midi.on("midijs",function(message){
+    console.log("midijs");
+    console.log(message);
     var launchpad = getLaunchpadByName(message.name);
     if (launchpad)
       launchpad.receiveMessage(message.deltaTime, message.message);

@@ -4,6 +4,13 @@ var Drawing = function(launchpad) {
 
   this.run = function() {
     launchpad.allLight(Launchpad.colors.off);
+    launchpad.displayString("Canvas");
+    setTimeout(function() {
+      launchpad.displayString("Draw things");
+      setTimeout(function() {
+        launchpad.allLight(Launchpad.colors.off);
+      },2000);
+    },2000);
   }
 
   var colors = [
