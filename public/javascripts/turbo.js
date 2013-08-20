@@ -26,6 +26,8 @@ var Turbo = function(launchpad) {
   this.run = function() {
     launchpad.allLight(Launchpad.colors.off);
     launchpad.displayString("Turbo Disco");
+    clearInterval(this.interval);
+
     setTimeout(function() {
       launchpad.allLight(Launchpad.colors.off);
       audio.currentTime = 0;
@@ -36,7 +38,7 @@ var Turbo = function(launchpad) {
           showRandom();
         }
       },0);
-    },2000);
+    },launchpad.instructionDelay);
   }
 
   this.deactivate = function() {

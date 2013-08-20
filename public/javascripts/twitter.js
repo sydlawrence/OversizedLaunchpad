@@ -7,7 +7,7 @@ var Twitter = function(launchpad) {
     setTimeout(function() {
       launchpad.midi.emit("tweet_start",{});
       launchpad.allLight(Launchpad.colors.off);
-    },2000);
+    },launchpad.instructionDelay);
   }
   this.deactivate = function() {
     launchpad.midi.emit("tweet_end",{});

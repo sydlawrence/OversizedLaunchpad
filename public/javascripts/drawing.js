@@ -9,8 +9,8 @@ var Drawing = function(launchpad) {
       launchpad.displayString("Draw things");
       setTimeout(function() {
         launchpad.allLight(Launchpad.colors.off);
-      },2000);
-    },2000);
+      },launchpad.instructionDelay);
+    },launchpad.instructionDelay);
   }
 
   var colors = [

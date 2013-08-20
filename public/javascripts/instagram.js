@@ -5,14 +5,10 @@ var Instagram = function(launchpad) {
   this.run = function() {
 
     launchpad.allLight(Launchpad.colors.off);
-    launchpad.displayString("Instagram");
-    setTimeout(function() {
-      launchpad.displayString("#cat");
+    launchpad.displayString("Instagram   #cat");
       setTimeout(function() {
-        launchpad.allLight(Launchpad.colors.off);
         that.drawInstagram();
-      },2000);
-    },2000);
+      },launchpad.instructionDelay);
 
 
   }
@@ -42,6 +38,9 @@ var Instagram = function(launchpad) {
       var base_image = new Image();
 
       var processCanvas = function(context) {
+        if (!that.active) return;
+        launchpad.allLight(Launchpad.colors.off);
+
         for (var x = 0; x < 32; x++) {
           for (var y = 0; y < 32; y++) {
             processPixel(context, x, y);

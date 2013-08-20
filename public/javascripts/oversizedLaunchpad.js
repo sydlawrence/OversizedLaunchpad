@@ -8,6 +8,8 @@ var OversizedLaunchpad = function(midi, across, down) {
 
   this.midi = midi;
 
+  this.instructionDelay = 5000;
+
   this.clear = function() {
     for (var i = 0; i < launchpads.length; i++) {
       for (var j = 0; j < launchpads[i].length; j++) {
@@ -21,7 +23,7 @@ var OversizedLaunchpad = function(midi, across, down) {
     for (var c = 0; c < str.length;c++) {
       var i = c % launchpads.length;
       var j = Math.floor(c / launchpads[0].length);
-      var launchpad = launchpads[i][j];
+      var launchpad = launchpads[j][i];
       if (str[c] === " ") {
         launchpad.allLight(Launchpad.colors.red.high);
       } else {
@@ -110,8 +112,8 @@ var OversizedLaunchpad = function(midi, across, down) {
   var deathClock = new DeathClock(this);
   modeSelector.addMode(deathClock);
 
-  var twitter = new Twitter(this);
-  modeSelector.addMode(twitter);
+  // var twitter = new Twitter(this);
+  // modeSelector.addMode(twitter);
 
   var turbo = new Turbo(this);
   modeSelector.addMode(turbo);

@@ -11,14 +11,14 @@ var DeathClock = function(launchpad) {
     launchpad.allLight(Launchpad.colors.off);
     launchpad.displayString("Death Clock");
     setTimeout(function() {
-      launchpad.displayString("Send Year of");
+      launchpad.displayString("SendYearof");
       setTimeout(function() {
-        launchpad.displayString("Birth to:");
+        launchpad.displayString("Birth   to:");
         setTimeout(function() {
-          launchpad.displayString("02033228273");
-        },2000);
-      },2000);
-    },2000);
+          launchpad.displayString("020 33228273");
+        },launchpad.instructionDelay);
+      },launchpad.instructionDelay);
+    },launchpad.instructionDelay);
   }
 
   channel.bind('new_sms', function(data) {
