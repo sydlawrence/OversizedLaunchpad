@@ -6,8 +6,10 @@ var Drawing = function(launchpad) {
     launchpad.allLight(Launchpad.colors.off);
     launchpad.displayString("Canvas");
     setTimeout(function() {
+      if (!that.active) return;
       launchpad.displayString("Draw things");
       setTimeout(function() {
+        if (!that.active) return;
         launchpad.allLight(Launchpad.colors.off);
       },launchpad.instructionDelay);
     },launchpad.instructionDelay);

@@ -11,10 +11,13 @@ var DeathClock = function(launchpad) {
     launchpad.allLight(Launchpad.colors.off);
     launchpad.displayString("Death Clock");
     setTimeout(function() {
+      if (!that.active) return;
       launchpad.displayString("SendYearof");
       setTimeout(function() {
+        if (!that.active) return;
         launchpad.displayString("Birth   to:");
         setTimeout(function() {
+          if (!that.active) return;
           launchpad.displayString("020 33228273");
         },launchpad.instructionDelay);
       },launchpad.instructionDelay);

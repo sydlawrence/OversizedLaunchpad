@@ -11,9 +11,11 @@ var Wave = function(launchpad) {
     launchpad.allLight(Launchpad.colors.off);
     launchpad.displayString("Zen Garden");
     setTimeout(function() {
+      if (!that.active) return;
       launchpad.displayString("Press here");
       launchpad.launchpads[2][2]._grid[5][3].light(Launchpad.colors.yellow.high);
       setTimeout(function() {
+        if (!that.active) return;
         launchpad.allLight(Launchpad.colors.off);
       },launchpad.instructionDelay);
     },launchpad.instructionDelay);

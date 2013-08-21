@@ -32,15 +32,16 @@ var ModeSelector = function(launchpad) {
   }
 
   launchpad.on('press', function(button) {
-    if (button.launchpad.column === 3) {
+    if (button.launchpad.column === 3 && button.launchpad.row === 0) {
       var modeIndex = button.launchpad.row;
       if (button.special !== false) {
-        console.log(button.special);
         if (button.special.indexOf("right") > -1) {
+          if (button.y === 0) {
+            that.nextMode();
+          }
           // console.log("SWITCH MODE: "+button.y);
           // var mode = modes[button.y];
           // that.switchMode(mode);
-          that.nextMode();
         }
       }
     }
