@@ -11,16 +11,18 @@ var Wave = function(launchpad) {
     launchpad.allLight(Launchpad.colors.off);
     launchpad.displayString("Zen Garden");
     setTimeout(function() {
-      launchpad.displayString("Press away");
+      launchpad.displayString("Press here");
+      launchpad.launchpads[2][2]._grid[5][3].light(Launchpad.colors.yellow.high);
       setTimeout(function() {
         launchpad.allLight(Launchpad.colors.off);
-      },2000);
-    },2000);
+      },launchpad.instructionDelay);
+    },launchpad.instructionDelay);
   }
 
   var colors = [
     //0,
-    //Launchpad.colors.orange.high,
+    Launchpad.colors.green.high,
+    Launchpad.colors.orange.high,
     Launchpad.colors.green.high,
     Launchpad.colors.red.high
   ];

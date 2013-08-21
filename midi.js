@@ -11,10 +11,10 @@ io.set('log level', 1);
 
 /* MINISTRY OF SOUND CREDENTIALS */
 var twit = new Twitter({
-    consumer_key:         'xxxxx',
-    consumer_secret:      'xxxxx',
-    access_token_key:     'xxxxx',
-    access_token_secret:  'xxxxx'
+    consumer_key:         '5o8VmjHTSpPcpq2CnEXnw',
+    consumer_secret:      'QJjuyljTgmK1uV3C74C06iaYBnKxxPpPqvpgACo',
+    access_token_key:     '14860093-i5lSz8QnV9WjpOLWuRONhDTGN7e8kyivP6Nh0JzbM',
+    access_token_secret:  'Fqf78nlIN6XOQpxxTDyXusfAp1m8AvmjlYrFtpOlUzU'
 });
 
 
@@ -100,7 +100,14 @@ function createLaunchpad(name) {
   input.ignoreTypes(false, false, false);
 }
 
-
+var successes = 0;
 for (var i = 0; i < 16; i++) {
-  createLaunchpad(i);
+  try {
+    createLaunchpad(i);
+    console.log("success: "+i);
+    successes++;
+  } catch (e) {
+    console.log("failed: "+i);
+  }
 }
+console.log("successes: "+successes);
