@@ -29,6 +29,7 @@ var Turbo = function(launchpad) {
     clearInterval(this.interval);
 
     setTimeout(function() {
+      if (!that.active) return;
       launchpad.allLight(Launchpad.colors.off);
       audio.currentTime = 0;
       audio.play();
